@@ -84,6 +84,11 @@
 <p>以上七种剪枝思路是能通用的，在搜索树形解空间时，当发现某个子树肯定不会有解时，和该子树相同的所有子树同样不会存在解，剪枝思路5最为典型。其次在树高度更高的地方发现子树不存在解能跳过大块无效的解空间，剪枝思路1，2，4，6，7都是这个思路的剪枝。</p>
 <p>到此所有剪枝用上便能在170ms左右能AC，我在代码中将所有木棍封装为一个内部类，提供pick，unpick，firstUnpick等方法使代码更加可读，但是增加了代码的运行时常，如果拆开封装，以C风格重写算法，会在120ms左右AC。</p>
 <p>在以为万事俱备的时候提交代码依然出现TLE，经过和AC代码的详细对比，发现可能是输入方式上的差别，将Scanner换成BufferedReader之后果然出现天蓝天蓝的AC，这不科学啊，Scanner还是Java1.5才新出的工具类，没理由比之前的标准输入效率还低啊。在对比BufferedReader和Scanner源码之后，发现两个类都是以InputSteamReader为基础，BufferedReader更倾向于使用缓存调高输入的效率，而Scanner尽管也有大小为1024的缓存，但更倾向于使用正则方便的处理字符。</p>
+<p>在前段时间找工作笔试面试的过程中，碰到过这个问题。在第一层循环中确定分组数和每组和，确定之后就把木棍分配到每一组中，其实就成了一个负载均衡的问题，所以负载均衡问题算是这个问题的子问题。负载均衡有两种算法，精确算法就如该算法所示，深度优先搜索就是。当问题需求变为不要求准确的每组和完全相同，大致相同即可时，就能使用贪心算法了。首先依然需要将木棍按长度从大到小排序，因为贪心是从大到小去贪。然后每次把当前可用的最长木棍放入和最小的一组中，一直到木棍全部放入。当木棍数量为n，分组数量为m的时候，这是一个时间复杂度仅仅为$O(n log m)$的算法，而且仅仅是4/3倍近似，准确度较高。以下为证明过程。</p>
+<p><strong>引理1</strong>：当$n \le m$时，该算法是最优的。</p>
+<p><strong>引理2</strong>：当$n&gt;m$时，有$L _{max} \ge 2* l _{m+1}$。<br><strong>证明</strong>：当存在m+1个木棍时，由于按照降序排列，最后一根木棍$l_{m+1}$必然是最短的，由鸽笼原理，有一个分组里边必然有两根木棍，长度$ L_{max} \ge 2* l_{m+1}$。</p>
+<p><strong>定理1</strong>：最大长度贪心算法是3/2倍近似<br><strong>证明</strong>：$ L_i=( L_i- l_j)+ l_j \le L_{max}+ \frac 1 2 * L_{max}= \frac 3 2 * L_{max}$<br>但是该分析3/2倍并不是紧致的，于是有：</p>
+<p><strong>定理2[Graham, 1969]</strong>：最大长度贪心算法是4/3倍近似<br>证明就略了，略复杂，而且该分析结果是紧致的，tight case为：<br>m个分组, n(=2m+1)根木棍, 一根长度为m，其余长度都为两根，分别为m, m+1, m+2, …, 2m-1。</p>
 
       
     </div>
@@ -102,23 +107,6 @@
   </div>
 
         
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
       
       <div class="clearfix"></div>
     </footer>
@@ -130,19 +118,6 @@
   <h1 class="title">留言</h1>
 
   
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://yoursite.com/2014/11/27/poj1011/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
-      
   
 </section>
 
@@ -190,36 +165,6 @@
   &copy; 2014 Carl Cheng
   
 </div>
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 <div class="clearfix"></div></footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -236,5 +181,20 @@
 })(jQuery);
 </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
