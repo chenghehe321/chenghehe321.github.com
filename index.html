@@ -37,6 +37,8 @@
     
       <li><a href="/archives">Archives</a></li>
     
+      <li><a href="/atom.xml">Rss</a></li>
+    
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -89,11 +91,28 @@
 </nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:yoursite.com">
+  <form action="//baidu.com/baidu" method="get" accept-charset="utf-8">
+    <input type="search" name="word" results="0" placeholder="搜索">
+    <input type="hidden" name="si" value="yoursite.com">
+    <input name=tn type=hidden value="bds">
+	<input name=cl type=hidden value="3">
+	<input name=ct type=hidden value="2097152">
+	<input name=s type=hidden value="on">
   </form>
 </div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/11/27/poj1011/">POJ1011解题报告</a>
+      </li>
+    
+  </ul>
+</div>
+
 
   
 <div class="widget tag">
@@ -144,6 +163,11 @@
 (function($){
   $('.fancybox').fancybox();
 })(jQuery);
+</script>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F285dc6288772a0f4d70b20b5d0bafe06' type='text/javascript'%3E%3C/script%3E"));
 </script>
 
 <script type="text/x-mathjax-config">
