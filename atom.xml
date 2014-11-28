@@ -3,9 +3,9 @@
   <title><![CDATA[Carl Cheng's Home]]></title>
   <subtitle><![CDATA[A day is a miniature of eternity.   --  R. W. Emerson]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-11-27T17:39:15.611Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://chenghehe321.github.io/"/>
+  <updated>2014-11-28T05:45:59.192Z</updated>
+  <id>http://chenghehe321.github.io/</id>
   
   <author>
     <name><![CDATA[Carl Cheng]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[POJ1011解题报告]]></title>
-    <link href="http://yoursite.com/2014/11/27/poj1011/"/>
-    <id>http://yoursite.com/2014/11/27/poj1011/</id>
+    <link href="http://chenghehe321.github.io/2014/11/27/poj1011/"/>
+    <id>http://chenghehe321.github.io/2014/11/27/poj1011/</id>
     <published>2014-11-27T06:48:50.000Z</published>
     <updated>2014-11-27T10:02:52.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：POJ_1011">题目链接：<a href="http://poj.org/problem?id=1011" target="_blank" rel="external">POJ 1011</a></h3>
@@ -55,15 +55,15 @@
     
     </summary>
     
-      <category term="POJ" scheme="http://yoursite.com/tags/POJ/"/>
+      <category term="POJ" scheme="http://chenghehe321.github.io/tags/POJ/"/>
     
-      <category term="Algorithm" scheme="http://yoursite.com/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="http://chenghehe321.github.io/tags/Algorithm/"/>
     
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
+      <category term="DFS" scheme="http://chenghehe321.github.io/tags/DFS/"/>
     
-      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+      <category term="Java" scheme="http://chenghehe321.github.io/categories/Java/"/>
     
-      <category term="POJ" scheme="http://yoursite.com/categories/Java/POJ/"/>
+      <category term="POJ" scheme="http://chenghehe321.github.io/categories/Java/POJ/"/>
     
   </entry>
   
