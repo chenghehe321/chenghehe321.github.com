@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A day is a miniature of eternity.   --  R. W. Emerson]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenghehe321.github.io/"/>
-  <updated>2014-11-28T05:45:59.192Z</updated>
+  <updated>2014-11-28T15:09:20.253Z</updated>
   <id>http://chenghehe321.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://chenghehe321.github.io/2014/11/27/poj1011/"/>
     <id>http://chenghehe321.github.io/2014/11/27/poj1011/</id>
     <published>2014-11-27T06:48:50.000Z</published>
-    <updated>2014-11-27T10:02:52.000Z</updated>
+    <updated>2014-11-28T14:32:51.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：POJ_1011">题目链接：<a href="http://poj.org/problem?id=1011" target="_blank" rel="external">POJ 1011</a></h3>
 <h3 id="题目描述：">题目描述：</h3>
 <p>乔治拿来一组等长的木棒，将它们随机地砍断，使得每一节木棍的长度都不超过50个长度单位。然后他又想把这些木棍恢复到为裁截前的状态，但忘记了初始时有多少木棒以及木棒的初始长度。请你设计一个程序，帮助乔治计算木棒的可能最小长度。每一节木棍的长度都用大于零的整数表示。<br><a id="more"></a></p>
