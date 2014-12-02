@@ -235,7 +235,7 @@ article .gallery img {
   min-width: 100%;
   max-width: 100%;
   height: auto;
-  position: absolute;
+  position: center;
   top: 0;
   left: 0;
   opacity: 0;

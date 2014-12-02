@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A day is a miniature of eternity.   --  R. W. Emerson]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://chenghehe321.github.io/"/>
-  <updated>2014-11-28T15:09:20.253Z</updated>
+  <updated>2014-12-02T17:58:14.401Z</updated>
   <id>http://chenghehe321.github.io/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[参数算法(Parameterized Algorithm)拾遗]]></title>
+    <link href="http://chenghehe321.github.io/2014/12/03/parameterizedAlgorithm/"/>
+    <id>http://chenghehe321.github.io/2014/12/03/parameterizedAlgorithm/</id>
+    <published>2014-12-02T17:55:39.000Z</published>
+    <updated>2014-12-02T17:57:51.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="NP问题">NP问题</h3>
+<p>距离上次参与参数算法的报告已经很久了，再不回顾和记录，怕是早就忘得一干二净了。<br>说起参数算法，要从NP问题开始回顾。NP(Nondeterministic polynomial-time)问题是指一类问题可以在多项式时间内验证一个解是不是该问题的解，但是要在多项式时间内找到该问题的所有解却是很难甚至是不可能的。在实际解决问题时如果找到一个NP难问题在多项式时间内规约(Reduction)到这个问题上，则能证明该问题也是NP难的，想要解决是不容易的。<a id="more"></a>在现有的NP难问题中存在如下图所示的规约链条</p>
+<p><center><br><img src="http://carl-cheng.qiniudn.com/%E8%A7%84%E7%BA%A6%E9%93%BE%E6%9D%A1%28%E9%AB%98%E6%B8%85%29.png?attname=&e=1417597773&token=ERmvz_0iOqb5Ng5qyfJ7Rcc-cZKOi2fzkZd0y8oB:D5d6dzV-81xz02L1nKtscwc8Lfk" alt="规约链条" height="330" width="700"><br></center><br>在规约链条中，如果其中某一个问题能找到多项式时间的算法，其他所有问题都能使用该算法来达到多项式时间，就能证明$P=NP$了。这里可以脑洞大开$P=NP$了世界会发生怎样的事情。。。。。。好像最起码近似算法随机算法启发式算法这些牺牲精确结果去换时间的算法统统白发展了。<br>现阶段尽管可能只是存在指数时间的算法，但问题依然是需要被解决的。为了能尽量大的提高问题的输入规模，普遍有两种解决思路。一是如果允许可以退而求其次，使用近似算法，随机算法，启发式算法等非精确算法，这样虽然得到的结果不是准确的，但是能在多项式时间内完成。但是如果问题需要的就是问题精确的解。比如在生物计算的一些问题上，结果需要精确到某一个DNA上，得到结果可能是某几个DNA是没有大的意义的，在这样的情况下，就有第二种解决思路-参数算法。</p>
+<h3 id="参数算法">参数算法</h3>
+<p>NP难的问题时间复杂度都是指数级别，将问题解空间遍历一次的时间复杂度是$O(2^n)$，但是最后解集的大小k和总输入大小n相差可能会很大，于是就想到如果能将时间复杂度从$O(2^n)$降低到$O(n^C*2^k)$，这样我们能处理的数据规模会变大不少。例如在点覆盖问题(Vertex Cover)，边支配集问题(Edge Dominating Set)中，尽管问题输入规模为n，但是最后找到的解集k可能并不大。以边支配集为例，该问题是找到一个边的集合，当在图中删掉找到的这些边和边的端点之后，图中不再存在边。还有一种理解是找到一个边的集合，图中另外的边和集合中的所有边都不相邻。问题也有可以相互规约的等价的两种问法：</p>
+<ol>
+<li>Search Problem: 找到最小的边支配集；</li>
+<li>Decision Problem：问是否存在大小不超过k的边支配集。</li>
+</ol>
+<p>这个问题最开始在1979年被MR Garey和DS Johnson证明是NP完全问题，然后在1980年被Yannakakis和Gavril证明在最大度为3的二分图中依然是NP完全问题。肖鸣宇老师在2012年发表文章给出了一般图和3度图中时间复杂度分别为$O(2.4181^k)$和$O(2.1479^k)$的算法，改进了Fernau在2006年给出的在一般图中$O(2.6181^k)$算法。现在最新的成果还是肖老师在2013年给出在一般图中的算法，时间复杂度降低到$O(2.3147^k)$。<br>在具体的算法技巧上参数算法有五类技术：(1)分支(Branching)技术；(2)核心化(Kernelization)技术；(3)归纳技术；(4)双赢(Win/Win)技术；(5)其他。这个问题加上点覆盖问题(Vertex Cover)都是采用分支技术去解决。</p>
+<h3 id="固定参数可解(Fixed_Parameter_Tractable)">固定参数可解(Fixed Parameter Tractable)</h3>
+<p>和P与NP的分类相似，能找到参数算法的问题被称为FPT(Fixed Parameter Tractable)问题，这类问题之间的规约则不用在多项式时间内完成，是可以用指数时间完成的，称为FPT-Time。而暂时没找到的则用W分层(W-Hierarchy)进一步分类为W[t]-Hard，其中t为该问题通过FPT规约到WCNF-2SAT问题的传递次数。大多数固定参数不可解(Fixed Parameter Intractable)问题都属于W[1]-Hard或W[2]-Hard，例如经典的最大团问题(Maximum Clique)，独立集问题(Independent Set)等都属于W[1]-Hard。</p>
+<p>参数算法大体上如此，只是细节上远远不够，有空再继续研究。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="NP问题">NP问题</h3>
+<p>距离上次参与参数算法的报告已经很久了，再不回顾和记录，怕是早就忘得一干二净了。<br>说起参数算法，要从NP问题开始回顾。NP(Nondeterministic polynomial-time)问题是指一类问题可以在多项式时间内验证一个解是不是该问题的解，但是要在多项式时间内找到该问题的所有解却是很难甚至是不可能的。在实际解决问题时如果找到一个NP难问题在多项式时间内规约(Reduction)到这个问题上，则能证明该问题也是NP难的，想要解决是不容易的。]]>
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://chenghehe321.github.io/tags/Algorithm/"/>
+    
+      <category term="Algorithm" scheme="http://chenghehe321.github.io/categories/Algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[POJ1011解题报告]]></title>
